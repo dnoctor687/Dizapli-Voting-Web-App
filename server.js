@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const app = express();
 const PORT = 3300;
@@ -6,6 +7,9 @@ console.log("Server Running");
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
+
+// Enable All CORS Requests
+app.use(cors());
 
 let votes = []; // An array to store votes
 
@@ -26,10 +30,10 @@ app.post('/api/votes', (req, res) => {
     }
     });
     
-// app.listen(PORT, () => {
-//     console.log(`Server running on http://localhost:${PORT}`);
-//   });
-// Test to see if server is running and listening to correct port 
+ app.listen(PORT, () => {
+     console.log(`Server running on http://localhost:${PORT}`);
+   });
+
 
 app.get('/api/votes/results', (req, res) => {
     
